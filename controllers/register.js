@@ -64,8 +64,8 @@ export default async (req, res) => {
   };
 
   req.session.message = "user added";
-  res.redirect(301,"/");
-
+  req.flash('message', 'user added !');
+  res.redirect(301,"/message");
 };
 
 
