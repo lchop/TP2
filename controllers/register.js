@@ -1,16 +1,20 @@
 import {UserModel} from "../Data/UserModel.js";
+import crypto from "crypto"
 import mongoose from "mongoose";
 
 export default async (req, res) => {
+  const secret = process.env.SECRET;
+  const sha256Hasher = crypto.createHmac("sha256", secret);
+
   const { firstName: fn, lastName: ln, email:e, password:p, password_confirm: pc } = req.body;
   if (pc !== p){
     req.session.message = "user not added, passworld not identical";
     req.flash('message', 'user not added, passworld not identical');
     res.redirect(301,"/message");
-
     return;
-  } 
-  if (!fn && !ln && !e && !p){
+  }
+  let hashPassword = sha256Hasher.update(p).digest('hex');
+  if (!fn && !ln && !e && !hashPassword){
     req.session.message = "user not added, empty variable";
     req.flash('message', 'user not added, empty variable');
     res.redirect(301,"/message");
@@ -37,7 +41,7 @@ export default async (req, res) => {
           firstName : fn,
           lastName :ln,
           email: e,
-          password :p
+          password : hashPassword
         });
     } catch (error) {
       console.log(error.message);
