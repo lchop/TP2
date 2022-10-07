@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//unpkg.com/semantic-ui@2.3.1/dist/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="/login.css">
+    
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="ui">
+        <div class="column">
+            <h2 class="ui teal image header">
+                <div class="content">
+                    Register
+                </div>
+            </h2>
+            <form action="/register" method="post" class="ui large form">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="firstName" placeholder="firstName" required="required" pattern="[A-Za-z]{1,20}">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="lastName" placeholder="lastName" required="required" pattern="[A-Za-z]{1,20}">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="mail icon"></i>
+                            <input type="email" name="email" placeholder="email" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" placeholder="Password" required="required" pattern="[A-Za-z0-9]{1,20}">
+                            <span id='message'></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password_confirm" placeholder="Password confirm" required="required" pattern="[A-Za-z0-9]{1,20}">
+                        </div>
+                    </div>
+                    <button class="ui fluid large teal submit button">register</button>
+                </div>
+                <div class="ui error message"></div>
+            </form>
+        </div>
+        <div class="ui center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <div class="content">
+                        Login
+                    </div>
+                </h2>
+                <form action="/login" method="post" class="ui large form">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="mail icon"></i>
+                                <input type="mail" name="mail" placeholder="mail" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="Password" required="required" pattern="[A-Za-z0-9]{1,20}">
+                            </div>
+                        </div>
+                        <button class="ui fluid large teal submit button">Login</button>
+                    </div>
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+</body>
+
+</html>
